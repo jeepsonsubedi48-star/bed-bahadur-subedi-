@@ -1,0 +1,561 @@
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 25%, #ffd4e5 50%, #ffb3d9 75%, #ff9ec9 100%);
+    position: relative;
+}
+
+/* ===== FLOATING HEARTS ANIMATION ===== */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 105, 180, 0.6);
+    transform: rotate(45deg);
+    animation: float-up 8s infinite ease-in;
+    opacity: 0;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 105, 180, 0.6);
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: 10px;
+}
+
+/* Individual heart animations with different delays and positions */
+.heart:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 7s;
+}
+
+.heart:nth-child(2) {
+    left: 20%;
+    animation-delay: 1s;
+    animation-duration: 9s;
+}
+
+.heart:nth-child(3) {
+    left: 30%;
+    animation-delay: 2s;
+    animation-duration: 6s;
+}
+
+.heart:nth-child(4) {
+    left: 40%;
+    animation-delay: 0.5s;
+    animation-duration: 8s;
+}
+
+.heart:nth-child(5) {
+    left: 50%;
+    animation-delay: 1.5s;
+    animation-duration: 7.5s;
+}
+
+.heart:nth-child(6) {
+    left: 60%;
+    animation-delay: 2.5s;
+    animation-duration: 8.5s;
+}
+
+.heart:nth-child(7) {
+    left: 70%;
+    animation-delay: 0.8s;
+    animation-duration: 7s;
+}
+
+.heart:nth-child(8) {
+    left: 80%;
+    animation-delay: 1.8s;
+    animation-duration: 9s;
+}
+
+.heart:nth-child(9) {
+    left: 90%;
+    animation-delay: 2.2s;
+    animation-duration: 6.5s;
+}
+
+.heart:nth-child(10) {
+    left: 15%;
+    animation-delay: 3s;
+    animation-duration: 8s;
+}
+
+@keyframes float-up {
+    0% {
+        bottom: -50px;
+        opacity: 0;
+        transform: rotate(45deg) translateX(0);
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    90% {
+        opacity: 0.8;
+    }
+
+    100% {
+        bottom: 110vh;
+        opacity: 0;
+        transform: rotate(45deg) translateX(100px);
+    }
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.content-wrapper {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+/* ===== ANIMATED HEADING ===== */
+.main-heading {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    color: #ff1744;
+    text-shadow:
+        0 0 10px rgba(255, 23, 68, 0.5),
+        0 0 20px rgba(255, 23, 68, 0.3),
+        0 0 30px rgba(255, 23, 68, 0.2),
+        2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    animation: glow-pulse 2s ease-in-out infinite, float 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 10px rgba(255, 23, 68, 0.5),
+            0 0 20px rgba(255, 23, 68, 0.3),
+            0 0 30px rgba(255, 23, 68, 0.2),
+            2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    50% {
+        text-shadow:
+            0 0 20px rgba(255, 23, 68, 0.8),
+            0 0 30px rgba(255, 23, 68, 0.6),
+            0 0 40px rgba(255, 23, 68, 0.4),
+            2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ===== MESSAGE BOX ===== */
+.message-box {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow:
+        0 8px 32px rgba(255, 105, 180, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fade-in-up 1s ease-out;
+}
+
+.message-box:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 12px 40px rgba(255, 105, 180, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.promise-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: #d81b60;
+    line-height: 1.8;
+    font-weight: 600;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== PROMISE BUTTON ===== */
+.promise-button {
+    position: relative;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.3rem;
+    color: white;
+    background: linear-gradient(135deg, #ff1744 0%, #f50057 100%);
+    border: none;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow:
+        0 4px 15px rgba(255, 23, 68, 0.4),
+        0 0 20px rgba(255, 23, 68, 0.2);
+    transition: all 0.3s ease;
+    animation: button-entrance 1.2s ease-out 0.5s both;
+}
+
+.promise-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+        0 6px 25px rgba(255, 23, 68, 0.6),
+        0 0 30px rgba(255, 23, 68, 0.4);
+}
+
+.promise-button:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+}
+
+.button-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.promise-button:hover .button-glow {
+    width: 300px;
+    height: 300px;
+}
+
+@keyframes button-entrance {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ===== HIDDEN PROMISE CARD ===== */
+.hidden-promise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: fade-in 0.3s ease-out;
+}
+
+.hidden-promise.show {
+    display: flex;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.promise-card {
+    background: linear-gradient(135deg, #fff5f8 0%, #ffe8f0 100%);
+    border-radius: 25px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow:
+        0 20px 60px rgba(255, 23, 68, 0.4),
+        0 0 0 2px rgba(255, 255, 255, 0.8);
+    animation: card-pop-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+}
+
+@keyframes card-pop-in {
+    from {
+        opacity: 0;
+        transform: scale(0.5) rotate(-5deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.promise-header {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #ff1744;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.promise-content {
+    font-family: 'Poppins', sans-serif;
+    color: #c2185b;
+    text-align: left;
+}
+
+.promise-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.promise-content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.promise-content li {
+    font-size: 1.1rem;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    border-left: 4px solid #ff1744;
+    transition: all 0.3s ease;
+    animation: slide-in-left 0.5s ease-out backwards;
+}
+
+.promise-content li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.promise-content li:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.promise-content li:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.promise-content li:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.promise-content li:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.promise-content li:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+@keyframes slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.promise-content li:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(255, 23, 68, 0.2);
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    text-align: center;
+    color: #d81b60;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+.close-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: white;
+    background: linear-gradient(135deg, #f50057 0%, #ff1744 100%);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 23, 68, 0.3);
+}
+
+.close-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
+}
+
+.close-btn:active {
+    transform: translateY(0);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .main-heading {
+        font-size: 3rem;
+    }
+
+    .message-box {
+        padding: 1.5rem;
+    }
+
+    .promise-text {
+        font-size: 1.2rem;
+    }
+
+    .promise-button {
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
+    }
+
+    .promise-card {
+        padding: 1.5rem;
+    }
+
+    .promise-header {
+        font-size: 2rem;
+    }
+
+    .promise-content p {
+        font-size: 1rem;
+    }
+
+    .promise-content li {
+        font-size: 0.95rem;
+        padding: 0.6rem;
+    }
+
+    .signature {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-heading {
+        font-size: 2.5rem;
+    }
+
+    .message-box {
+        padding: 1.2rem;
+    }
+
+    .promise-text {
+        font-size: 1rem;
+    }
+
+    .promise-button {
+        font-size: 1rem;
+        padding: 0.9rem 1.8rem;
+    }
+
+    .promise-header {
+        font-size: 1.8rem;
+    }
+
+    .promise-content li {
+        font-size: 0.9rem;
+    }
+
+    .heart {
+        width: 15px;
+        height: 15px;
+    }
+
+    .heart::before,
+    .heart::after {
+        width: 15px;
+        height: 15px;
+    }
+
+    .heart::before {
+        top: -7.5px;
+    }
+
+    .heart::after {
+        left: 7.5px;
+    }
+}
